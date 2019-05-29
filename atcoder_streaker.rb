@@ -61,7 +61,9 @@ class AtCoderStreaker
   def today_accepted_submission(atcoder_id)
     submissions = JSON.parse(open("https://kenkoooo.com/atcoder/atcoder-api/results?user=#{atcoder_id}").read)
     submissions.select do |submission|
-      submission['result'] = 'AC' && submission['epoch_second'] >= Date.today.strftime('%s').to_i
+      submission['result'] = 'AC' && submission['epoch_second'] >= Date.today.strftime('%s').to_i - 9 * 60 * 60
     end
   end
 end
+
+
